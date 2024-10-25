@@ -1,0 +1,7 @@
+pyspark
+apache-airflow-providers-apache-spark
+apache-airflow-providers-google
+pyarrow
+pandas 
+gcloud
+kagglehub
