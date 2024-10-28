@@ -27,6 +27,8 @@ In this project, I chose to utilize the following tools:
 - **Data Transformation**: PySpark
 - **Visualization**: Looker Studio
 
+<img src="images/data-pipeline.png" alt="data-pipeline" width="600"/>
+
 ## Project Reproduction
 To reproduce this project, follow the instructions below:
 
