@@ -61,7 +61,7 @@ x-airflow-common:
     AIRFLOW_CONN_GOOGLE_CLOUD_DEFAULT: 'google-cloud-platform://?extra__google_cloud_platform__key_path=/.google/credentials/google_credentials.json'
     GCP_PROJECT_ID: 'red-splice-439613-q8'
     GCP_GCS_BUCKET: 'de_data_lake_red-splice-439613-q8'
-
+    GCP_GCS_BUCKET_TRANSFORMED: 'de_data_lake_transformed_red-splice-439613-q8'
   volumes:
     - ./dags:/opt/airflow/dags
     - ./logs:/opt/airflow/logs

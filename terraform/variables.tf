@@ -1,5 +1,6 @@
 locals {
   data_lake_bucket = "de_data_lake"
+  data_lake_transformed_bucket = "de_data_lake_transformed"
 }
 
 variable "project" {
