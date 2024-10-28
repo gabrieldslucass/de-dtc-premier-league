@@ -2,12 +2,8 @@ import os
 import logging
 import pendulum
 
-from pyspark.sql import SparkSession
 from airflow.providers.google.cloud.operators.bigquery import BigQueryCreateExternalTableOperator, BigQueryInsertJobOperator
 from airflow.decorators import dag, task
-
-# Initialize Spark session
-spark = SparkSession.builder.appName("ReadDataset").getOrCreate()
 
 # Load environment variables
 PROJECT_ID = os.environ.get("GCP_PROJECT_ID")
