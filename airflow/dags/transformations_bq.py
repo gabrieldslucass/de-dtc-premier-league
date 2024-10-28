@@ -129,13 +129,16 @@ def calculate_team_wise_season_stats(total_team_stats):
             F.sum('TotalWins').alias('TotalWins'),
             F.sum('TotalLosses').alias('TotalLosses'),
             F.sum('TotalDraw').alias('TotalDraw'),
-            F.when(F.count('TotalTeamShot') == 0, 'Not Available').otherwise(F.sum(F.when(F.col('TotalTeamShot').isNotNull(), F.col('TotalTeamShot')).otherwise(F.lit(None)))).alias('TotalTeamShot'),
-            F.when(F.count('TotalShotOnTarget') == 0, 'Not Available').otherwise(F.sum(F.when(F.col('TotalShotOnTarget').isNotNull(), F.col('TotalShotOnTarget')).otherwise(F.lit(None)))).alias('TotalShotOnTarget'),
-            F.when(F.count('TotalCorners') == 0, 'Not Available').otherwise(F.sum(F.when(F.col('TotalCorners').isNotNull(), F.col('TotalCorners')).otherwise(F.lit(None)))).alias('TotalCorners'),
-            F.when(F.count('TotalFouls') == 0, 'Not Available').otherwise(F.sum(F.when(F.col('TotalFouls').isNotNull(), F.col('TotalFouls')).otherwise(F.lit(None)))).alias('TotalFouls'),
-            F.when(F.count('TotalYellowCard') == 0, 'Not Available').otherwise(F.sum(F.when(F.col('TotalYellowCard').isNotNull(), F.col('TotalYellowCard')).otherwise(F.lit(None)))).alias('TotalYellowCard'),
-            F.when(F.count('TotalRedCard') == 0, 'Not Available').otherwise(F.sum(F.when(F.col('TotalRedCard').isNotNull(), F.col('TotalRedCard')).otherwise(F.lit(None)))).alias('TotalRedCard')
-        )
+            F.sum('TotalTeamShot').alias('TotalTeamShot'),
+            F.sum('TotalShotOnTarget').alias('TotalShotOnTarget'),
+            F.sum('TotalCorners').alias('TotalCorners'),
+            F.sum('TotalFouls').alias('TotalFouls'),
+            F.sum('TotalYellowCard').alias('TotalYellowCard'),
+            F.sum('TotalRedCard').alias('TotalRedCard')) \
+            .withColumn('SeasonStartDate',
+                F.to_date(F.concat(F.expr("split(Season, '-')[0]"), F.lit('-08-01')), 'yyyy-MM-dd')) \
+            .withColumn('SeasonEndDate',
+                F.to_date(F.concat(F.expr("split(Season, '-')[1]"), F.lit('-05-31')), 'yyyy-MM-dd'))
         
         logger.info("calculate_team_wise_season_stats - Successfully calculated team-wise by season statistics")
         return team_wise_stats
