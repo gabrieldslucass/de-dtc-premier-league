@@ -65,7 +65,7 @@ def drop_columns(df):
             'MarketAvgOver2_5Goals', 'MarketAvgUnder2_5Goals'
         ]
         df_dropped = df.drop(*columns_to_drop)
-        logger.info("drop_columns Successfully dropped unnecessary columns")
+        logger.info("drop_columns - Successfully dropped unnecessary columns")
         return df_dropped
 
     except Exception as e:
@@ -242,7 +242,7 @@ def load_team_wise_season_stats_bq():
     default_args={
         "retries": 1,
     },
-    tags=["data_engineering"],
+    tags=["PremierLeague"],
 )
 def transformations_bq():
     transform_data_task = transform_data()
@@ -250,4 +250,5 @@ def transformations_bq():
 
     transform_data_task >> load_team_wise_season_stats_bqtask
 
+# Execute the main DAG function
 transformations_bq()

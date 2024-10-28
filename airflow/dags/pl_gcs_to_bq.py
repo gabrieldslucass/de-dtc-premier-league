@@ -70,7 +70,7 @@ def create_bq_partitioned_table():
     default_args={
         "retries": 1,
     },
-    tags=["data_engineering"],
+    tags=["PremierLeague"],
 )
 def pl_gcs_to_bq():
     task_external_table = create_bq_external_table()
