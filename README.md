@@ -27,7 +27,7 @@ In this project, I chose to utilize the following tools:
 - **Data Transformation**: PySpark
 - **Visualization**: Looker Studio
 
-## Steps for Project Reproduction
+## Project Reproduction
 To reproduce this project, follow the instructions below:
 
 1. Prepare Google Cloud Platform (GCP) service accounts with the necessary permissions for GCS and BigQuery.
@@ -37,7 +37,7 @@ To reproduce this project, follow the instructions below:
 5. Forward port 8080 and connect to it on your local machine.
 6. Development of a visualization using LookerStudio
 
-## Summary of Data Pipeline and Transformation Decisions
+## Summary of Data Pipeline
 This project includes an Airflow DAG orchestrating each phase of the data pipeline, from ingestion to storage and transformation:
 
 1. Download of csv file containing the data from KaggleHub;
@@ -56,4 +56,6 @@ The project includes a Looker Studio dashboard displaying key metrics from the E
 
 Additionally, users have the flexibility to filter data by selecting one or more seasons and teams, enabling a tailored analysis of team performance and match outcomes in the EPL.
 
-![Dashboard](images\dashboard.png)
+Take a look into the finished dashboard: [here](https://lookerstudio.google.com/s/jFNR3e6WZko)
+
+![Dashboard](images/dashboard.png)
